@@ -5,7 +5,7 @@ let minNum = Math.min(apple, banana, orange);
 let sumGoods = apple + banana + orange;
 let sumRoundDown = Math.floor(apple) + Math.floor(banana) + Math.floor(orange);
 let sumRoundHundreds = Math.round((apple+banana+orange)/100)*100;
-let evenNumber = sumRoundDown % 2 === 0;
+let evenNumber = Math.floor(sumGoods) % 2 === 0;
 let restFrom500 = 500 - sumGoods;
 let avPriceRound = Number.parseFloat(sumGoods/3).toFixed(2);
 let randomDiscount = Math.random()*100;
