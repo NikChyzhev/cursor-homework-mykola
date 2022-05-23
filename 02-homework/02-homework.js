@@ -1,9 +1,11 @@
+debugger
+
 let minNumber;
 let maxNumber;
 
 do {
     minNumber = parseInt(prompt('Enter staring number'), 10);
-} while (!minNumber);
+} while (!minNumber && minNumber !== 0);
 
 do {
     maxNumber = parseInt(prompt('Enter ending number'), 10);
