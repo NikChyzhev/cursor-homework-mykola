@@ -1,5 +1,3 @@
-debugger
-
 let minNumber;
 let maxNumber;
 
@@ -9,23 +7,15 @@ do {
 
 do {
     maxNumber = parseInt(prompt('Enter ending number'), 10);
-} while (!maxNumber);
+} while (!maxNumber || maxNumber < minNumber);
 
 const passEvenNumber = confirm('Do you want to pass Even numbers in sumup?')
-
-// console.log(minNumber);
-// console.log(maxNumber);
-// console.log(passEvenNumber);
 
 let sumUp = 0;
 
 for (let i = minNumber; i <= maxNumber; i++) {
-    if (passEvenNumber) {
-        if (i % 2 == 0) {
-
-        } else {
-            sumUp = sumUp + i;
-        }
+    if (passEvenNumber && i % 2 == 0) {
+        continue;
     } else {
         sumUp = sumUp + i;
     }
