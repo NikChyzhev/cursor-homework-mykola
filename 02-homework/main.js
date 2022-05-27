@@ -1,13 +1,15 @@
+debugger
+
 let minNumber;
 let maxNumber;
 
 do {
-    minNumber = parseInt(prompt('Enter staring number'), 10);
-} while (!minNumber && minNumber !== 0);
+    minNumber = prompt('Enter staring number');
+} while (!(Number.isInteger(parseInt(minNumber)) && minNumber % 1 === 0));
 
 do {
-    maxNumber = parseInt(prompt('Enter ending number'), 10);
-} while (!maxNumber || maxNumber < minNumber);
+    maxNumber = prompt('Enter ending number');
+} while (!(Number.isInteger(parseInt(maxNumber), 10) && maxNumber % 1 === 0 && maxNumber > minNumber));
 
 const passEvenNumber = confirm('Do you want to pass Even numbers in sumup?')
 
