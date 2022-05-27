@@ -1,5 +1,3 @@
-debugger
-
 let minNumber;
 let maxNumber;
 
