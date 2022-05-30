@@ -81,7 +81,7 @@ function deleteLetters(letterToDelete, text) {
 console.log(`If delete letter 'a' from "blablabla" you will get ${deleteLetters('a', "blablabla")}`);
 
 function isPalyndrom(text) {
-    const textLower = text.toLowerCase();
+    const textLower = text.toLowerCase().split(' ').join('');
     let reverseText = "";
     for (i = (text.length - 1); i >= 0; i--){
         reverseText += textLower.charAt(i);
