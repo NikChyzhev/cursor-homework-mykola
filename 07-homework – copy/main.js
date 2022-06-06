@@ -13,10 +13,11 @@ console.log('getRandomArray', getRandomArray(15, 1, 100));
 
 const getModa = (...numbers) => {
     numbers = numbers.filter(element => Number.isInteger(element));
-    let countMax = 0;    
-    let moda = [];
+    console.log('numbers: ', numbers);
+    let countMax = 0;
+    let moda;
     for (i = 0; i < numbers.length; i++) {
-        let count = 0;        
+        let count = 0;
         for (j = 0; j < numbers.length; j++){
             if (numbers[i] === numbers[j]) {
                 count++;
@@ -24,22 +25,25 @@ const getModa = (...numbers) => {
         }
         if (count > countMax) {
             countMax = count;
-            moda = [numbers[i]];            
-        } else if (count === countMax && !moda.find(element => element === numbers[i])) {                       
-            moda.push(numbers[i]);
+            moda = numbers[i];
         }
     }
-    return moda.length > 1 ? moda : moda[0];
+    return moda;
 }
 console.log('getModa(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getModa(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2));
 
 // 3. getAverage(...numbers) – яка рахує середнє арифметичне
 
 const getAverage = (...numbers) => {
-    numbers = numbers.filter(element => Number.isInteger(element));
     let sum = 0;
-    numbers.forEach(element => sum += element);
-    return (sum/numbers.length).toFixed(1);
+    let count = 0;
+    numbers.forEach(element => {
+        if(Number.isInteger(element)) {
+            sum += element;
+            count++
+        }
+    });
+    return (sum/count).toFixed(1);
 }
 console.log('getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2));
 
@@ -66,21 +70,22 @@ console.log('getMedian(1, 2, 3, 4, 5): ', getMedian(1, 2, 3, 4, 5));
 // 5. filterEvenNumbers(...numbers) - фільтрує парні числа передані як аргументи функції;
 
 const filterEvenNumbers = (...numbers) => {
-    return numbers.filter(value => value % 2 !== 0);
+    const newArr = numbers.filter((value) => {return (value !== 0 && value % 2 !== 0)});
+    return newArr;
 };
 console.log('filterEvenNumbers(1, 2, 3, 4, 5, 6): ', filterEvenNumbers(1, 2, 3, 4, 5, 6));
 
 // 6. countPositiveNumbers(...numbers) – рахує кількість чисел більших 0
 
 const countPositiveNumbers = (...numbers) => {
-   return numbers.filter(value => value > 0).length;
+   return numbers.filter((value) => {return value > 0}).length;
 }
 console.log('countPositiveNumbers(1, -2, 3, -4, -5, 6): ', countPositiveNumbers(1, -2, 3, -4, -5, 6));
 
 // 7. getDividedByFive(...numbers) – яка відфільтрує усі елементи в масиві та залишить тільки ті, які діляться на ціло на 5
 
 const getDividedByFive = (...numbers) => {
-    return numbers.filter(value => value % 5 === 0);
+    return numbers.filter((value) => {return value % 5 === 0});
 }
 console.log('getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
 
