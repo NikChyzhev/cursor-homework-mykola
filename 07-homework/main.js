@@ -128,7 +128,8 @@ const generateCombinations = (word) => {
             combinations.push(word[i] + subLetterCombination[j]);
         }
     }
-    return combinations
+
+    return combinations.filter((vallue, index, arr) => arr.indexOf(vallue) === index)
 }
 console.log('generateCombinations("man"): ', generateCombinations("man"));
 console.log('generateCombinations("ol"): ', generateCombinations("ol"));
