@@ -3,19 +3,25 @@ const themes = ["Диференційне рівняння", "Теорія ав�
 const marks = [4, 5, 5, 3, 4, 5];
 
 function pairBoyGirrl (arr) {
-    arr = [...arr];
-    const newArr = [[arr[0], arr[2]], [arr[1], arr[3]], [arr[4], arr[5]]];
+    const arrGirl = [];
+    const arrBoy = [];
+    const newArr = [];
+    for (i = 0; i < arr.length; i++) {
+        arr[i][arr[i].length - 1] === 'а'? arrGirl.push(arr[i]) : arrBoy.push(arr[i]);
+    }
+    if (arrGirl.length === arrBoy.length) {
+        for (i = 0; i < arrBoy.length; i++) {
+            newArr.push ([arrBoy[i], arrGirl[i]]);
+        }
+    }
     return newArr;
 }
 console.log('pairBoyGirrl', pairBoyGirrl(students))
 
-function combinePairAndThem (pair, them) {
-    them = [...them];
+function combinePairAndThem (pair, them) {    
     let newPair = [];
     for (i = 0; i < pair.length; i++) {
-        newPair.push([])
-        newPair[i][0] = pair[i].join(' і ');
-        newPair[i][1] = them[i];
+        newPair.push([pair[i].join(' і '), them[i]]);        
     }
     return newPair
 }
@@ -24,9 +30,7 @@ console.log('combinePairAndThem',combinePairAndThem(pairBoyGirrl(students), them
 function combineStudentMurk(student, mark) {
     newArr = [];
     for (i = 0; i < student.length; i++) {
-        newArr.push([]);
-        newArr[i][0] = student[i];
-        newArr[i][1] = mark[i];
+        newArr.push([student[i], mark[i]]);  
     }
     return newArr
 }
