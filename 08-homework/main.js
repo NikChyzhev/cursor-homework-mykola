@@ -1,140 +1,101 @@
-// 1. getRandomArray(length, min, max) – яка повертає масив випадкових цілих чисел
-
-const getRandomArray = (length, min, max) => {
-    let newArr = [];
-    for (i = 0; i < length; i++){        
-        newArr.push(Math.round(Math.random()*(max - min) + min));
+const students = [{
+    name: "Tanya",
+    course: 3,
+    subjects: {
+      math: [4, 4, 3, 4],
+      algorithms: [3, 3, 3, 4, 4, 4],
+      data_science: [5, 5, 3, 4]
     }
-    return newArr;
-}
-console.log('getRandomArray', getRandomArray(15, 1, 100));
-
-// 2. getModa(...numbers) – яка вираховує моду
-
-const getModa = (...numbers) => {
-    numbers = numbers.filter(element => Number.isInteger(element));
-    console.log('numbers: ', numbers);
-    let countMax = 0;
-    let moda;
-    for (i = 0; i < numbers.length; i++) {
-        let count = 0;
-        for (j = 0; j < numbers.length; j++){
-            if (numbers[i] === numbers[j]) {
-                count++;
-            }            
-        }
-        if (count > countMax) {
-            countMax = count;
-            moda = numbers[i];
-        }
+  }, {
+    name: "Victor",
+    course: 4,
+    subjects: {
+      physics: [5, 5, 5, 3],
+      economics: [2, 3, 3, 3, 3, 5],
+      geometry: [5, 5, 2, 3, 5]
     }
-    return moda;
-}
-console.log('getModa(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getModa(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2, 4.5, 5.1));
-
-// 3. getAverage(...numbers) – яка рахує середнє арифметичне
-
-const getAverage = (...numbers) => {
-    let sum = 0;
-    let count = 0;
-    numbers.forEach(element => {
-        if(Number.isInteger(element)) {
-            sum += element;
-            count++
-        }
-    });
-    return (sum/count).toFixed(1);
-}
-console.log('getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2));
-
-// 4. getMedian(...numbers) – яка рахує медіану
-
-const getMedian = (...numbers) => {
-    let newArr = [];
-    numbers.forEach(element => {
-        if(Number.isInteger(element)) {
-            newArr.push(element);
-        }
-    });
-    newArr.sort((a, b) => {return a-b});
-    if (newArr.length % 2 === 1) {
-        return newArr[Math.floor(newArr.length / 2)];
-    } else {
-        return (newArr[newArr.length / 2 - 1] + newArr[newArr.length / 2]) / 2;
+  }, {
+    name: "Anton",
+    course: 2,
+    subjects: {
+      statistics: [4, 5, 5, 5, 5, 3, 4, 3, 4, 5],
+      english: [5, 3],
+      cosmology: [5, 5, 5, 5]
     }
-}
-console.log('getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2));
-console.log('getMedian(1, 2, 3, 4): ', getMedian(1, 2, 3, 4));
-console.log('getMedian(1, 2, 3, 4, 5): ', getMedian(1, 2, 3, 4, 5));
+  }];
 
-// 5. filterEvenNumbers(...numbers) - фільтрує парні числа передані як аргументи функції;
+// 1. getSubjects(students[0] --> ["Math", "Algorithms", "Data science"] - яка повертає список предметів для конкретного студента
+  
+const getSubjects = (student => Object.
+    keys(student.subjects).
+    map (value => value.charAt(0).toUpperCase() + value.slice(1)));      
+console.log('1. getSubjects(students[0]): ', getSubjects(students[0]));
 
-const filterEvenNumbers = (...numbers) => {
-    const newArr = numbers.filter((value) => {return (value !== 0 && value % 2 !== 0)});
-    return newArr;
+// 2. getAverageMark(students[0]) --> 3.79 – яка поверне середню оцінку по усім предметам
+const getAverage = (...numbers) => {   
+    let sum = 0;    
+    numbers.forEach(element => sum += element); 
+    return (sum/numbers.length).toFixed(2);
 };
-console.log('filterEvenNumbers(1, 2, 3, 4, 5, 6): ', filterEvenNumbers(1, 2, 3, 4, 5, 6));
 
-// 6. countPositiveNumbers(...numbers) – рахує кількість чисел більших 0
+const getAverageMark = (student) => {
+    const marks = Object.values(student.subjects).flat();    
+    return getAverage(...marks);
+};
+console.log('2. getAverageMark(students[0]): ', getAverageMark(students[0]));
 
-const countPositiveNumbers = (...numbers) => {
-   return numbers.filter((value) => {return value > 0}).length;
-}
-console.log('countPositiveNumbers(1, -2, 3, -4, -5, 6): ', countPositiveNumbers(1, -2, 3, -4, -5, 6));
+// 3.getStudentInfo(students[0]) – яка повертає інформацію загального виду по переданому студенту
 
-// 7. getDividedByFive(...numbers) – яка відфільтрує усі елементи в масиві та залишить тільки ті, які діляться на ціло на 5
-
-const getDividedByFive = (...numbers) => {
-    return numbers.filter((value) => {return value % 5 === 0});
-}
-console.log('getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
-
-// 8. replaceBadWords(string) Погані слова: shit та fuck
-
-const replaceBadWords = (string) => {
-    const badWords = ['shit', 'fuck'];
-    const newString = badWords.reduce((result, badWord) => {
-        return result.split(badWord).join('*'.repeat(badWord.length))
-    }, string);
-    return newString;
-}
-console.log('replaceBadWords("Are you fucking kidding?"): ', replaceBadWords("Are you fucking kidding?"));
-console.log('replaceBadWords("Holy shit!"): ', replaceBadWords("Holy shit!"));
-console.log(`replaceBadWords("It's bullshit!"): `, replaceBadWords("It's bullshit!"));
-
-// 9. divideByThree(word), яка розбиває кожне слово на умовні склади по 3 букви
-
-
-const divideByThree = (word) => {
-    const newWord = word.toLowerCase().split(' ').join('').split('');    
-    let newArr = [];
-    for (i = 0; i < newWord.length; i += 3) {
-       newArr.push(newWord.slice(i, i+3).join(''));
+const getStudentInfo = (student) => {
+    return {
+        course: student.course,
+        name: student.name,
+        averageMark: getAverageMark(student),
     }
-    return newArr;
 }
-console.log('divideByThree("Commander"): ', divideByThree("Commander"));
-console.log('divideByThree("live"): ', divideByThree("live"));
+console.log('3. getStudentInfo(students[0]): ', getStudentInfo(students[0]));
 
-// 10. generateCombinations(word), яка видасть всі можливі перестановки(унікальні, без повторень) букв в слові
+// 4. getStudentsNames(students) – яка повертає імена студентів у алфавітному порядку.
 
-const generateCombinations = (word) => {
-    if (word.length > 10) return [];
+const getStudentsNames = (list) => {
+    const arrNames = [];
+    for (student of list) {
+        arrNames.push(student.name);
+    }           
+    return arrNames.sort();
+}
+console.log('4. getStudentsNames(students): ', getStudentsNames(students));
 
-    if (word.length < 2) return [word];
+// 5. getBestStudent(students) – яка повертає кращого студента зі списку по показнику середньої оцінки.
 
-    let combinations = [];
-
-    for (let i = 0; i < word.length; i++) {
-
-        let subLetterCombination = generateCombinations(word.slice(0, i) + word.slice(i+1, word.length + 1));
-
-        for (j = 0; j < subLetterCombination.length; j++) {
-            combinations.push(word[i] + subLetterCombination[j]);
+const getBestStudent = (list) => {
+    let maxAvMark = 0;
+    let bestStudentName;
+    for (student of list) {
+        if (maxAvMark <= getAverageMark(student)) {
+            maxAvMark = getAverageMark(student);
+            bestStudentName = student.name
         }
-    }
-    return combinations
+    }   
+    return bestStudentName; 
 }
-console.log('generateCombinations("man"): ', generateCombinations("man"));
-console.log('generateCombinations("ol"): ', generateCombinations("ol"));
+console.log('5. getBestStudent(students): ', getBestStudent(students));
 
+// 6. calculateWordLetters("тест") – яка повертає обє'кт, в якому ключі це букви у слові, а значення – кількість їх повторень
+
+const calculateWordLetters = (word) => {
+    const letters = word.split('');    
+    const uniqLetter = letters.filter((vallue, index, arr) => arr.indexOf(vallue) === index).sort();
+    let objLetters = {};
+    for (i = 0; i < uniqLetter.length; i++) {
+        let count = 0;
+        for (j = 0; j < letters.length; j++) {
+            if (uniqLetter[i] === letters[j]) {
+                count ++
+            }
+        }
+        objLetters[uniqLetter[i]] = count;
+    }
+    return objLetters;
+}
+console.log('6. calculateWordLetters("тест"): ', calculateWordLetters("тест"))
