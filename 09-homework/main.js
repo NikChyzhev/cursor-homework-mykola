@@ -12,17 +12,17 @@ console.log('Random Country is: ', randCountry);
 function getMyTaxes(salary) {
     console.log(`1. My taxes are ${this.tax * salary}`);
 }
-const taxSalary = getMyTaxes.call(eval(randCountry), +prompt(`enter salary`));
+getMyTaxes.call(eval(randCountry), +prompt(`enter salary`));
 
 function getMiddleTaxes (country) {
     console.log(`2. Average tax is ${(this.tax * this.middleSalary).toFixed(2) }` )
 }
-const avgTax = getMiddleTaxes.call(eval(randCountry));
+getMiddleTaxes.call(eval(randCountry));
 
 function getTotalTaxes (country) {
     console.log(`3. Total taxes are ${(this.tax * this.middleSalary * this.vacancies).toFixed(2) }` )
 }
-const totalTaxes = getTotalTaxes.call(eval(randCountry));
+getTotalTaxes.call(eval(randCountry));
 
 function getMySalary(country) {
     const randSalary = (Math.random()*(2000 - 1500) + 1500).toFixed(2);
@@ -37,5 +37,5 @@ function getMySalary(country) {
 
 const mySalary = getMySalary.bind(eval(randCountry));
 
-let timerId = setInterval(mySalary, 1000);
-setTimeout(() => clearInterval(timerId), 10000);
+let timerId = setInterval(mySalary, 10000);
+setTimeout(() => clearInterval(timerId), 100000);
