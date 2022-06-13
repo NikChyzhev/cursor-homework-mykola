@@ -33,9 +33,8 @@ console.log('1. getSubjects(students[0]): ', getSubjects(students[0]));
 
 // 2. getAverageMark(students[0]) --> 3.79 – яка поверне середню оцінку по усім предметам
 const getAverage = (...numbers) => {   
-    let sum = 0;    
-    numbers.forEach(element => sum += element); 
-    return (sum/numbers.length).toFixed(2);
+    let sum = numbers.reduce((prevVal, element) => prevVal + element, 0);     
+    return +(sum/numbers.length).toFixed(2);
 };
 
 const getAverageMark = (student) => {
@@ -58,11 +57,7 @@ console.log('3. getStudentInfo(students[0]): ', getStudentInfo(students[0]));
 // 4. getStudentsNames(students) – яка повертає імена студентів у алфавітному порядку.
 
 const getStudentsNames = (list) => {
-    const arrNames = [];
-    for (student of list) {
-        arrNames.push(student.name);
-    }           
-    return arrNames.sort();
+    return list.map(val => val.name).sort();        
 }
 console.log('4. getStudentsNames(students): ', getStudentsNames(students));
 
@@ -71,7 +66,7 @@ console.log('4. getStudentsNames(students): ', getStudentsNames(students));
 const getBestStudent = (list) => {
     let maxAvMark = 0;
     let bestStudentName;
-    for (student of list) {
+    for (const student of list) {
         if (maxAvMark <= getAverageMark(student)) {
             maxAvMark = getAverageMark(student);
             bestStudentName = student.name
@@ -87,9 +82,9 @@ const calculateWordLetters = (word) => {
     const letters = word.split('');    
     const uniqLetter = letters.filter((vallue, index, arr) => arr.indexOf(vallue) === index).sort();
     let objLetters = {};
-    for (i = 0; i < uniqLetter.length; i++) {
+    for (let i = 0; i < uniqLetter.length; i++) {
         let count = 0;
-        for (j = 0; j < letters.length; j++) {
+        for (let j = 0; j < letters.length; j++) {
             if (uniqLetter[i] === letters[j]) {
                 count ++
             }
