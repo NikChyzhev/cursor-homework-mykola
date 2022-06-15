@@ -42,7 +42,16 @@ class Student {
 }
 
 class BudgetStudent extends Student {
-    
+    constructor(university, course, fullName){
+        super(university, course, fullName); 
+        setInterval(this.getScholarship, 30000);    
+    }
+
+    getScholarship(){
+        if(!this.dismised || this.getAverageMark >= 4){
+            console.log(`Ви отримали 1400 грн. стипендії`);
+        }
+    } 
 }
 
 const student1 = new Student('Вищої Школи Психотерапії м.Одеса', 1, 'Остап Бендер');
@@ -53,5 +62,7 @@ console.log(student1.marks);
 console.log(student1.getAverageMark());
 student1.dismiss();
 console.log(`Студент відрахований?: ${student1.dismised}`);
+console.log(`Оцінки після відрахування: ${student1.marks}`);
 student1.recover();
-console.log(`Після відновлення чи тудент відрахований?: ${student1.dismised}`);
+console.log(`Після відновлення чи cтудент ще відрахований в базі даних?: ${student1.dismised}`);
+const student2 = new BudgetStudent('КНЕУ м.Київ', 3, 'Тарас Бульба');
