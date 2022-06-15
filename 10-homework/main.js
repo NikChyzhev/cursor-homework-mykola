@@ -55,7 +55,7 @@ console.log(`Після відновлення чи cтудент ще відр�
 class BudgetStudent extends Student {
     constructor(university, course, fullName){
         super(university, course, fullName);
-        setInterval(() => this.getScholarship(), 3000); 
+        setInterval(() => this.getScholarship(), 30000); 
     }
 
     getScholarship(){               
