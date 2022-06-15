@@ -28,7 +28,7 @@ const students = [{
   
 const getSubjects = (student => Object.
     keys(student.subjects).
-    map (value => value.charAt(0).toUpperCase() + value.slice(1)));      
+    map (value => value.charAt(0).toUpperCase() + value.slice(1).split("_").join(" ")));      
 console.log('1. getSubjects(students[0]): ', getSubjects(students[0]));
 
 // 2. getAverageMark(students[0]) --> 3.79 – яка поверне середню оцінку по усім предметам
