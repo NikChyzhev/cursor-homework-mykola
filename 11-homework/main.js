@@ -1,6 +1,8 @@
+document.body.setAttribute("id", "main-square");
+
 function generateBlocks() {
     document.body.innerHTML = "";
-
+    
     const mainSquare = [];
     
     for (let i = 0; i < 25; i++) {
@@ -14,13 +16,14 @@ function generateBlocks() {
 }
 
 function generateBlocksInterval() {
-    document.body.setAttribute("id", "main-square");
 
     generateBlocks();
 
     setInterval(() => generateBlocks(), 1000);    
 }
 
-generateBlocksInterval()
+// generateBlocks()
+generateBlocksInterval();
+
 
 
