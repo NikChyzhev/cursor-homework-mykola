@@ -1,27 +1,20 @@
 const start = Date.now();
 
-async function getRandomChinese(length) {
-  
-  try{
-    let text = ""
-
-    while (length > 0) {
-        await new Promise(res => setTimeout(() => {
-        const sign = Date.now() % 100000;      
-        const signChines = String.fromCharCode(sign);
-        text += signChines
-        // console.log(text);        
-        length--;
-        // console.log(Date.now()-start);
-        // start = Date.now();
-        res(text);
-      }, 50));
-    };    
-    console.log(text);
-    } catch(e) { };
-  
+function getRandomChinese(length) {
+  return new Promise((resolve, reject) => {
+      symbols = '';
+      let i = 0;
+      if (length <= 0) reject();
+      while (i < length) {
+          setTimeout(() => {
+              symbols += String.fromCharCode(Date.now() % 100000);
+              if (symbols.length === length) resolve(symbols);
+          }, (i + 1) * 50);
+          i++;
+      }
+  })
+  .then((symbols) => console.log(symbols + ' за '+ (Date.now() - start +' ms')))
+  .catch(() => console.log('Число має бути більше 0'))
 }
 
-const length = 4
-
-getRandomChinese(length)
+getRandomChinese(4);
