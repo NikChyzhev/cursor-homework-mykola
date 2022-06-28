@@ -5,8 +5,7 @@ function getRandomChinese(length) {
       if (length <= 0) reject();
       while (i < length) {
           setTimeout(() => {
-              symbols += String.fromCharCode(Date.now() % 100000);
-              console.log(Date.now() % 100000);
+              symbols += String.fromCharCode(Date.now() % 100000);              
               if (symbols.length === length) resolve(symbols);
           }, (i + 1) * 50);
           i++;
