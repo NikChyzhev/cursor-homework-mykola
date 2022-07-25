@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/cursor-homework-mykola/18-homework.v1/static/css/main.073c9b0a.css",
+    "main.js": "/cursor-homework-mykola/18-homework.v1/static/js/main.b382edfc.js",
+    "static/js/787.7edf8bfa.chunk.js": "/cursor-homework-mykola/18-homework.v1/static/js/787.7edf8bfa.chunk.js",
+    "index.html": "/cursor-homework-mykola/18-homework.v1/index.html",
+    "main.073c9b0a.css.map": "/cursor-homework-mykola/18-homework.v1/static/css/main.073c9b0a.css.map",
+    "main.b382edfc.js.map": "/cursor-homework-mykola/18-homework.v1/static/js/main.b382edfc.js.map",
+    "787.7edf8bfa.chunk.js.map": "/cursor-homework-mykola/18-homework.v1/static/js/787.7edf8bfa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.b382edfc.js"
+  ]
+}
