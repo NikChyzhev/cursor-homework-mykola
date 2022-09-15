@@ -1,45 +1,82 @@
-axios.defaults.baseURL = "https://swapi.dev/api"
+axios.defaults.baseURL = "https://swapi.dev/api";
 
-const ENTER_KEY_KODE = "Enter";
+const btn = document.querySelector(".btn");
+const enterEpisot = document.querySelector(".input");
+const btnNext = document.querySelector(".btnNext");
+const btnPrev = document.querySelector(".btnPrev");
+const container = document.querySelector(".container");
+const wookiee = document.querySelector(".checkbox");
+const pageNum = document.querySelector(".pageForPlanet");
 
-const wrapperPersonages = document.createElement("div");
-wrapperPersonages.cla 
-
-const btn = document.createElement("button");
-btn.innerHTML = "отримати інформацію";
-document.body.appendChild(btn);
-
-const enterEpisot = document.createElement("input");
-enterEpisot.setAttribute('type', 'text');
-enterEpisot.setAttribute('value', 'Enter episod');
-document.body.appendChild(enterEpisot);
-
-const btnNext = document.createElement("button");
-btnNext.innerHTML = "Next";
-document.body.appendChild(btnNext);
-
-enterEpisot.addEventListener("click", () => enterEpisot.value = "")
-enterEpisot.addEventListener('input', (e) => {
-    e.pre
-    episod = e.target.value;
-})
+enterEpisot.addEventListener("input", (e) => {
+  episod = e.target.value;
+});
 
 btn.addEventListener("click", getPersonage);
+btnNext.addEventListener("click", next);
+btnPrev.addEventListener("click", prev);
 
-async function getPersonage () {
-    const result = await axios.get("/people/");
-    const personages = result.data.results;
-    const filteredPersonages = personages.filter(item => item.films.find(item => item === `https://swapi.dev/api/films/${episod}/`));
+let wookieeLang = wookiee.checked;
+// console.log('wookieeLang: ', wookieeLang)
 
-    console.log(filteredPersonages);
+wookiee.addEventListener("change", (e)=>{
+  wookieeLang = e.target.checked  
+});
+
+
+async function getPersonage() {
+  const result = await axios.get(`/films/${episod}/`);
+  const characters = result.data.characters;  
+  container.innerHTML=""  
+  for(i=0; i<=characters.length; i++){
+      renderPersonages(characters[i])
+  }   
 }
 
-async function getPlanets () {
-    const resultPlanets = await axios.get("/planets/");
-    const planets = resultPlanets.data.results;
-
-    console.log('planets: ', planets);    
+async function renderPersonages (personage){
+    const characterData = await axios.get(`${personage}${!wookieeLang? '':'?format=wookiee'}`);
+    const pesronData = characterData.data
+    container.innerHTML += `
+      <div class="person">
+          <h3>${!wookieeLang? pesronData.name:pesronData.whrascwo}</h3>
+          <p>DOB: ${!wookieeLang? pesronData.birth_year:pesronData.rhahrcaoac_roworarc}</p>
+          <p>Gender: ${!wookieeLang? pesronData.gender:pesronData.rrwowhwaworc}</p>
+      </div>
+    `;     
 }
 
-getPlanets ();
+let page = 1
+pageNum.innerHTML+=`page: ${page} `
 
+function next(){
+  pageNum.innerHTML=''
+  page===6? page : page+=1
+  pageNum.innerHTML+=`page: ${page} `
+  getPlanets(page)
+}
+
+function prev(){
+  pageNum.innerHTML=''
+  page===1? page : page-=1
+  pageNum.innerHTML+=`page: ${page} `
+  getPlanets(page)
+}
+
+
+async function getPlanets(page) {  
+  const resultPlanets = await axios.get(`/planets/?page=${page}`);
+  const planets = resultPlanets.data.results;
+  container.innerHTML="" 
+  for(i=0; i<=9; i++){
+    container.innerHTML += `
+      <div class="person">
+          <h3>${planets[i].name}</h3>
+          <p>diameter: ${planets[i].diameter}</p>
+          <p>gravity: ${planets[i].gravity}</p>
+      </div>
+    `;     
+  }
+
+
+  console.log("planets: ", resultPlanets);
+}

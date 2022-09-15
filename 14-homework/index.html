@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Homework 14</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:wght@300&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
+
 <body>
+    <div class="head">
+        <button class="btn">get info about personages: </button>
+        <input type="text" placeholder="Enter episod" class="input">
+        <span class="planets">
+            Planets list: 
+            <button class="btnPrev">Prev</button>
+            <span class="pageForPlanet"></span>
+            <button class="btnNext">Next</button>
+        </span>
+        <span>
+            Wookie for personages only: 
+            <label class="switch">
+                <input type="checkbox" class="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </span>
+    </div>
+    <div class="container"></div>
     <script src="main.js"></script>
 </body>
+
 </html>
