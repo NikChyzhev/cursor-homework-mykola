@@ -1,8 +1,8 @@
-const students = ["Олександр", "Ігор", "Олена", "Іра", "Олексій", "Світлана"];
+export const students = ["Олександр", "Ігор", "Олена", "Іра", "Олексій", "Світлана"];
 const themes = ["Диференційне рівняння", "Теорія автоматів", "Алгоритми і структури даних"];
 const marks = [4, 5, 5, 3, 4, 5];
 
-function pairBoyGirrl (arr) {
+export function pairBoyGirrl (arr) {
     const arrGirl = [];
     const arrBoy = [];
     const newArr = [];
@@ -16,7 +16,7 @@ function pairBoyGirrl (arr) {
     }
     return newArr;
 }
-console.log('pairBoyGirrl', pairBoyGirrl(students))
+// console.log('pairBoyGirrl', pairBoyGirrl(students))
 
 function combinePairAndThem (pair, them) {    
     let newPair = [];
@@ -25,7 +25,7 @@ function combinePairAndThem (pair, them) {
     }
     return newPair
 }
-console.log('combinePairAndThem',combinePairAndThem(pairBoyGirrl(students), themes));
+// console.log('combinePairAndThem',combinePairAndThem(pairBoyGirrl(students), themes));
 
 function combineStudentMurk(student, mark) {
     newArr = [];
@@ -34,7 +34,7 @@ function combineStudentMurk(student, mark) {
     }
     return newArr
 }
-console.log('combineStudentMurk', combineStudentMurk(students, marks))
+// console.log('combineStudentMurk', combineStudentMurk(students, marks))
 
 function putRandomMarkForPair(pair) {
     pair = [...pair];
@@ -43,4 +43,4 @@ function putRandomMarkForPair(pair) {
     }
     return pair
 }
-console.log('putRandomMarkForPair',putRandomMarkForPair(combinePairAndThem(pairBoyGirrl(students), themes)));
+// console.log('putRandomMarkForPair',putRandomMarkForPair(combinePairAndThem(pairBoyGirrl(students), themes)));

@@ -1,8 +1,8 @@
-function getMaxDigit(number) {
+export function getMaxDigit(number) {
     const arrayFromNumber = Array.from(String(number));
     return Math.max(...arrayFromNumber);
 }
-console.log(`max number in 349862 is ${getMaxDigit(349862)}`)
+// console.log(`max number in 349862 is ${getMaxDigit(349862)}`)
 
 function getNumPower(num, power) {
     let numPow = num;
@@ -13,22 +13,22 @@ function getNumPower(num, power) {
     }
     return numPow;
 }
-console.log(`number 2 in power 3 = ${getNumPower(2, 3)}`);
+// console.log(`number 2 in power 3 = ${getNumPower(2, 3)}`);
 
 function getNameFirstUperRestLower (name){
     return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 }
-console.log(`Name in correct form is ${getNameFirstUperRestLower('iVaN')}`);
+// console.log(`Name in correct form is ${getNameFirstUperRestLower('iVaN')}`);
 
 function getNetSalary(grossSalary){
     return Math.round(grossSalary * 0.805)
 }
-console.log(`Net salary of 1.000 is ${getNetSalary(1000)}`)
+// console.log(`Net salary of 1.000 is ${getNetSalary(1000)}`)
 
 function getRandomNumber(start, end) {
     return Math.round(Math.random() * (end - start) + start);
 }
-console.log(`Randon number from 1 to 10 is ${getRandomNumber(1, 10)}`);
+// console.log(`Randon number from 1 to 10 is ${getRandomNumber(1, 10)}`);
 
 function countLetter(leter, text) {
     let counter = 0;
@@ -40,7 +40,7 @@ function countLetter(leter, text) {
     }
     return counter
 }
-console.log(`In word "Асталавіста" is ${countLetter("а", "Асталавіста")} letters a`);
+// console.log(`In word "Асталавіста" is ${countLetter("а", "Асталавіста")} letters a`);
 
 function convertCurrency(ammountAndCurrency) {
     const ammountAndCurrencyLower = ammountAndCurrency.toLowerCase();
@@ -55,9 +55,9 @@ function convertCurrency(ammountAndCurrency) {
         return `You entered incorrect currency of ${ammountAndCurrency}, please enter $ or UAH only.`;
     }
 }
-console.log(convertCurrency("100$"));
-console.log(convertCurrency("2500UAH"));
-console.log(convertCurrency("2500EUR"));
+// console.log(convertCurrency("100$"));
+// console.log(convertCurrency("2500UAH"));
+// console.log(convertCurrency("2500EUR"));
 
 function getRandomPassword(length = 8) {
     let pass = "";
@@ -66,8 +66,8 @@ function getRandomPassword(length = 8) {
     }
     return pass
 }
-console.log(`Your pass is: ${getRandomPassword(4)}`);
-console.log(`Your pass is: ${getRandomPassword()}`);
+// console.log(`Your pass is: ${getRandomPassword(4)}`);
+// console.log(`Your pass is: ${getRandomPassword()}`);
 
 function deleteLetters(letterToDelete, text) {
     let newText = "";
@@ -78,7 +78,7 @@ function deleteLetters(letterToDelete, text) {
     }
     return newText;
 }
-console.log(`If delete letter 'a' from "blablabla" you will get ${deleteLetters('a', "blablabla")}`);
+// console.log(`If delete letter 'a' from "blablabla" you will get ${deleteLetters('a', "blablabla")}`);
 
 function isPalyndrom(text) {
     const textLower = text.toLowerCase().split(' ').join('');
@@ -88,11 +88,11 @@ function isPalyndrom(text) {
     }
     return textLower === reverseText
 }
-console.log(`isPalyndrom("Мадам") ${isPalyndrom("Мадам")}`);
-console.log(`isPalyndrom("кокос") ${isPalyndrom("кокос")}`);
-console.log(`isPalyndrom("Я несу гусеня") ${isPalyndrom("Я несу гусеня")}`);
+// console.log(`isPalyndrom("Мадам") ${isPalyndrom("Мадам")}`);
+// console.log(`isPalyndrom("кокос") ${isPalyndrom("кокос")}`);
+// console.log(`isPalyndrom("Я несу гусеня") ${isPalyndrom("Я несу гусеня")}`);
 
-function deleteDuplicateLetter(text) {
+export function deleteDuplicateLetter(text) {
     const textLower = text.toLowerCase();
     let newText = "";
     for (i = 0; i < text.length; i++) {
@@ -108,4 +108,4 @@ function deleteDuplicateLetter(text) {
     }
     return newText
 }
-console.log(`deleteDuplicateLetter("Бісквіт був дуже ніжним") IS ${deleteDuplicateLetter("Бісквіт був дуже ніжним")}`);
+// console.log(`deleteDuplicateLetter("Бісквіт був дуже ніжним") IS ${deleteDuplicateLetter("Бісквіт був дуже ніжним")}`);

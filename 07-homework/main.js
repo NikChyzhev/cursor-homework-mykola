@@ -1,13 +1,13 @@
 // 1. getRandomArray(length, min, max) – яка повертає масив випадкових цілих чисел
 
-const getRandomArray = (length, min, max) => {
+export const getRandomArray = (length, min, max) => {
     let newArr = [];
-    for (i = 0; i < length; i++){        
+    for (let i = 0; i < length; i++){        
         newArr.push(Math.round(Math.random()*(max - min) + min));
     }
     return newArr;
 }
-console.log('getRandomArray', getRandomArray(15, 1, 100));
+// console.log('getRandomArray', getRandomArray(15, 1, 100));
 
 // 2. getModa(...numbers) – яка вираховує моду
 
@@ -31,7 +31,7 @@ const getModa = (...numbers) => {
     }
     return moda.length > 1 ? moda : moda[0];
 }
-console.log('getModa(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getModa(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2));
+// console.log('getModa(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getModa(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2));
 
 // 3. getAverage(...numbers) – яка рахує середнє арифметичне
 
@@ -41,7 +41,7 @@ const getAverage = (...numbers) => {
     numbers.forEach(element => sum += element);
     return (sum/numbers.length).toFixed(1);
 }
-console.log('getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2));
+// console.log('getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getAverage(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2));
 
 // 4. getMedian(...numbers) – яка рахує медіану
 
@@ -59,30 +59,30 @@ const getMedian = (...numbers) => {
         return (newArr[newArr.length / 2 - 1] + newArr[newArr.length / 2]) / 2;
     }
 }
-console.log('getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2));
-console.log('getMedian(1, 2, 3, 4): ', getMedian(1, 2, 3, 4));
-console.log('getMedian(1, 2, 3, 4, 5): ', getMedian(1, 2, 3, 4, 5));
+// console.log('getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getMedian(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2));
+// console.log('getMedian(1, 2, 3, 4): ', getMedian(1, 2, 3, 4));
+// console.log('getMedian(1, 2, 3, 4, 5): ', getMedian(1, 2, 3, 4, 5));
 
 // 5. filterEvenNumbers(...numbers) - фільтрує парні числа передані як аргументи функції;
 
 const filterEvenNumbers = (...numbers) => {
     return numbers.filter(value => value % 2 !== 0);
 };
-console.log('filterEvenNumbers(1, 2, 3, 4, 5, 6): ', filterEvenNumbers(1, 2, 3, 4, 5, 6));
+// console.log('filterEvenNumbers(1, 2, 3, 4, 5, 6): ', filterEvenNumbers(1, 2, 3, 4, 5, 6));
 
 // 6. countPositiveNumbers(...numbers) – рахує кількість чисел більших 0
 
 const countPositiveNumbers = (...numbers) => {
    return numbers.filter(value => value > 0).length;
 }
-console.log('countPositiveNumbers(1, -2, 3, -4, -5, 6): ', countPositiveNumbers(1, -2, 3, -4, -5, 6));
+// console.log('countPositiveNumbers(1, -2, 3, -4, -5, 6): ', countPositiveNumbers(1, -2, 3, -4, -5, 6));
 
 // 7. getDividedByFive(...numbers) – яка відфільтрує усі елементи в масиві та залишить тільки ті, які діляться на ціло на 5
 
 const getDividedByFive = (...numbers) => {
     return numbers.filter(value => value % 5 === 0);
 }
-console.log('getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
+// console.log('getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2): ', getDividedByFive(6, 2, 55, 11, 78, 2, 55, 77, 57, 87, 23, 2, 56, 3, 2))
 
 // 8. replaceBadWords(string) Погані слова: shit та fuck
 
@@ -93,9 +93,9 @@ const replaceBadWords = (string) => {
     }, string);
     return newString;
 }
-console.log('replaceBadWords("Are you fucking kidding?"): ', replaceBadWords("Are you fucking kidding?"));
-console.log('replaceBadWords("Holy shit!"): ', replaceBadWords("Holy shit!"));
-console.log(`replaceBadWords("It's bullshit!"): `, replaceBadWords("It's bullshit!"));
+// console.log('replaceBadWords("Are you fucking kidding?"): ', replaceBadWords("Are you fucking kidding?"));
+// console.log('replaceBadWords("Holy shit!"): ', replaceBadWords("Holy shit!"));
+// console.log(`replaceBadWords("It's bullshit!"): `, replaceBadWords("It's bullshit!"));
 
 // 9. divideByThree(word), яка розбиває кожне слово на умовні склади по 3 букви
 
@@ -108,8 +108,8 @@ const divideByThree = (word) => {
     }
     return newArr;
 }
-console.log('divideByThree("Commander"): ', divideByThree("Commander"));
-console.log('divideByThree("live"): ', divideByThree("live"));
+// console.log('divideByThree("Commander"): ', divideByThree("Commander"));
+// console.log('divideByThree("live"): ', divideByThree("live"));
 
 // 10. generateCombinations(word), яка видасть всі можливі перестановки(унікальні, без повторень) букв в слові
 
@@ -131,6 +131,6 @@ const generateCombinations = (word) => {
 
     return combinations.filter((vallue, index, arr) => arr.indexOf(vallue) === index)
 }
-console.log('generateCombinations("man"): ', generateCombinations("man"));
-console.log('generateCombinations("ol"): ', generateCombinations("ol"));
+// console.log('generateCombinations("man"): ', generateCombinations("man"));
+// console.log('generateCombinations("ol"): ', generateCombinations("ol"));
 
