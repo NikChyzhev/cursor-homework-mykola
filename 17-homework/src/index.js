@@ -1,6 +1,6 @@
 import './styles/styles.scss'
 import { getMaxDigit } from "../../04-homework/main.js"
-import { pairBoyGirrl } from '../../05-homework/main'
+import { pairBoyGirrl, students } from './HWs/05HW.js'
 import { getRandomArray } from '../../07-homework/main'
 
 import { createBtn } from "./Button/button.js"
